@@ -1,18 +1,23 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect }from 'react';
 import "./styles.css";
 
 export default function() {
   const [nome, setNome] = useState('');
   const [telefone, setTelefone] = useState('');
   const [termos, setTermos] = useState(false);
-  const [latitude, setLatitude] = useState();
-  const [longitude, setLongitude] = useState();
-  const [message, setMessage] = useState('Para mapearmos os casos de Coronavirus, precisamos acessar a sua localização');
-  const [btnAutoExameTxt, setBtnAutoExameTxt] = useState('Auto Exame');
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
+  const [message, setMessage] = useState('');
+  const [btnAutoExameTxt, setBtnAutoExameTxt] = useState('');
   const [btnAutoExame, setBtnAutoExame] = useState(false);
   const [autoExameOpen, setAutoExameOpen] = useState(false);
-  const [chatBotEnable, setchatBotEnable] = useState(false);
-  
+  const [chatBotEnable, setChatBotEnable] = useState(false);
+
+  useEffect(() => {
+    setMessage('Para mapearmos os casos de Coronavirus, precisamos acessar a sua localização');
+    setBtnAutoExameTxt('Auto Exame');
+  }, []);
+
   function handleAutoExameClick(e) {
     e.preventDefault();
     if(autoExameOpen) {
@@ -32,7 +37,9 @@ export default function() {
 
   function handleChatbotClick(e) {
     e.preventDefault();
-    if (navigator.geolocation) {
+    
+    if(navigator.geolocation)
+    {
       navigator.geolocation.getCurrentPosition((position) => {
         const latitudeValue = position.coords.latitude;
         const longitudeValue = position.coords.longitude;
@@ -40,26 +47,36 @@ export default function() {
         setLatitude(latitudeValue);
         setLongitude(longitudeValue);
         
-        console.log(position.coords.latitude)
-        console.log(latitudeValue)
-        console.log(latitude)
-        validateData() === true ? sendPost() : setMessage('Ocorreu um erro. Tente novamente.');
+        setMessage('Para mapearmos os casos de Coronavirus, precisamos acessar a sua localização');
+       
+        validateData() === true ? sendPost() : setMessage('Favor preencher todos os campos.');;
+      }, (error) => {
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            setMessage('É necessário que você permita o acesso à sua localização.');
+            break;
+          case error.POSITION_UNAVAILABLE:
+            setMessage('Sua localização está indisponivel.');
+            break;
+          default:
+            setMessage('Ocorreu um erro, tente novamente.');
+        }
       });
+
     } else {
-      setMessage("Você percisa permitir a sua geolocalização");
+      setMessage("Este navegador não suporta geolocalização.");
     }
   }
 
   function validateData() {
-    if(!nome && !telefone && !latitude && !longitude) {
-      setMessage('Favor preencher todos os campos, eles são obrigatórios.');
+    if(!(nome && telefone && latitude && longitude)) {
       return false;
     }
     return true;
   }
 
   async function sendPost() {
-    setchatBotEnable(true);
+    setChatBotEnable(true);
     let response = await fetch("https://juntoscomvc.com.br/", {
       method: "POST",
       mode: "cors",
@@ -71,8 +88,6 @@ export default function() {
     });
   
     let result = await response.json();
-  
-    console.log(response, result);
   }
 
   return(
@@ -95,12 +110,29 @@ export default function() {
           <form action="" method="post" className="chatform" id="chatform" name="chatform">
             <h2 className="chatbot__title">Antes de iniciar o chat, precisamos de algumas informações</h2>
             <div className="chatbot__container chatbot__container--vertical">
-              <input type="text" name="Nome" placeholder="Seu nome" id="name" className="chatbot__input--normal" />
+              <input 
+                type="text"
+                name="Nome"
+                placeholder="Seu nome"
+                id="name"
+                className="chatbot__input--normal"
+                value={nome}
+                onChange={e => setNome(e.target.value)}
+              />
               <label className="chatbot__label">Nome</label>
             </div>
             
             <div className="chatbot__container chatbot__container--vertical">
-              <input type="tel" name="Telefone" id="tel" placeholder="11 9 9999-9999" className="chatbot__input--normal" required />
+              <input
+                type="tel"
+                name="Telefone"
+                id="tel"
+                placeholder="11 9 9999-9999"
+                className="chatbot__input--normal"
+                required
+                value={telefone}
+                onChange={e => setTelefone(e.target.value)}
+              />
               <label className="chatbot__label">Telefone</label>
             </div>
             
