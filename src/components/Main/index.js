@@ -6,7 +6,7 @@ import ChatBotLogo from '../../assets/icon4.png';
 import "./styles.css";
 
 const Main = () => (
-    <main className="projetos">
+    <main id="projetosNavigation" className="projetos">
       <h2 className="projetos__heading">Nossos Projetos</h2>
       <p className="projetos__description">
         A rede JuntosComVc está trabalhando em diversos projetos de impacto

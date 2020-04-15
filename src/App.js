@@ -1,20 +1,14 @@
 import React from 'react';
-import Header from './components/Header';
-import Main from './components/Main';
-import Help from './components/Help';
-import Chatbot from './pages/Chatbot';
-import Footer from './components/Footer';
+import  { Router } from 'react-router-dom';
+import Routes from './routes';
+import history from './services/history';
 import './global.css';
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Main/>
-      <Help/>
-      <Chatbot/>
-      <Footer/>
-    </div>
+    <Router history={history}>
+      <Routes/>
+    </Router>
   );
 }
 

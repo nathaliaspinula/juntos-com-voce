@@ -3,9 +3,9 @@ import logo from '../../assets/LogoCompleta.png';
 import "./styles.css";
 
 const Header = () => (
-    <header>
+    <header id="headerNavigation">
          <nav className="navigator">
-            <a href="#" className="navigator__logo_link">
+            <a href="#headerNavigation" className="navigator__logo_link">
                 <img
                     src={logo}
                     alt="Juntos Com Você Logo"
@@ -19,16 +19,16 @@ const Header = () => (
             </button>
             <ul className="navigator__list" id="navlist">
             <li className="navigator__item">
-                <a href="#" className="navigator__link">Inicio</a>
+                <a href="#headerNavigation" className="navigator__link">Inicio</a>
             </li>
             <li className="navigator__item">
-                <a href="#" className="navigator__link">Projeto</a>
+                <a href="#projetosNavigation" className="navigator__link">Projeto</a>
             </li>
             <li className="navigator__item">
-                <a href="#" className="navigator__link">Participe</a>
+                <a href="#helpNavigation" className="navigator__link">Participe</a>
             </li>
             <li className="navigator__item">
-                <a href="#" className="navigator__link">Sobre</a>
+                <a href="#headerNavigation" className="navigator__link">Sobre</a>
             </li>
             </ul>
         </nav>
