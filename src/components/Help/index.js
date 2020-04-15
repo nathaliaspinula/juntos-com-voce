@@ -2,7 +2,7 @@ import React from 'react';
 import "./styles.css";
 
 const Help = () => (
-    <section className="help">
+    <section id="helpNavigation" className="help">
       <h2 className="help__heading">Como posso ajudar?</h2>
       <p className="help__desc">
         São diversas as formas de ajudar. A primeira delas é divulgando esta
