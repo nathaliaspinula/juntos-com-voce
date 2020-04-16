@@ -1,0 +1,37 @@
+.dicas-header {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    top: 0;
+    left: 0;
+    padding: 0 2%;
+    background: var(--white);
+    z-index: 9;
+    box-shadow: var(--soft-shadow);
+    color: #4F4F4F;
+}
+
+.dicas-header img {
+    height: 50px;
+    object-fit: contain;
+}
+
+.dicas-main {
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    background: #F0F9FA;
+}
+
+.dicas-main-container {
+    width: 90% !important;
+    margin-top: 30px !important;
+    height: 100vh;
+    background: #FEFEFE;
+    border-radius: 8px 8px 0px 0px;
+}
