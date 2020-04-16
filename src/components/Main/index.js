@@ -3,6 +3,7 @@ import HappyHourLogo from '../../assets/icon1.png';
 import InfoLogo from '../../assets/icon2.png';
 import DicasLogo from '../../assets/icon3.png';
 import ChatBotLogo from '../../assets/icon4.png';
+import { Link } from 'react-router-dom';
 import "./styles.css";
 
 const Main = () => (
@@ -14,29 +15,29 @@ const Main = () => (
       </p>
       <div className="projetos__container">
         <div className="projetos__projeto">
-          <a href="#" className="projeto__link">
+          <Link to="/" className="projeto__link">
             <img src={HappyHourLogo} alt="Happy Hour Icon" className="projeto__image" />
             <p className="projeto__text">Web Happy Hours</p>
-          </a>
+          </Link>
         </div>
         <div className="projetos__projeto">
-          <a href="#" className="projeto__link">
+          <Link to="/" className="projeto__link">
             <img src={InfoLogo} alt="" className="projeto__image" />
             <p className="projeto__text">Informação Confiável</p>
-          </a>
+          </Link>
         </div>
         <div className="projetos__projeto">
-          <a href="#" className="projeto__link">
+          <Link to="/dicas" className="projeto__link">
             <img src={DicasLogo} alt="" className="projeto__image" />
             <p className="projeto__text">Dicas para Quarentena</p>
-          </a>
+          </Link>
         </div>
         <div className="projetos__projeto">
-          <a href="#" className="projeto__link">
+          <Link to="/" className="projeto__link">
             <img src={ChatBotLogo} alt="" className="projeto__image" />
             <p className="projeto__text">Chatbot Covid-19</p>
-            </a>
-          </div>
+          </Link>
+        </div>
       </div>
     </main>
 );
