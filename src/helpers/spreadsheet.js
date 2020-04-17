@@ -27,10 +27,13 @@ export function load(callback) {
                     }
                 }
             )
+
+            const totalRegistros = data.length;
         
             callback({
                 dicas,
-                categorias
+                categorias,
+                totalRegistros
             })
 
             });
