@@ -18,6 +18,21 @@
     object-fit: contain;
 }
 
+.dicas-header-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.MuiBadge-colorPrimary {
+    background-color: #6B8BC8 !important;
+}
+
+.dicas-header-items-titulo {
+    padding-right: 13px;
+}
+
 .dicas-main {
     height: fit-content;
     display: flex;
@@ -29,9 +44,76 @@
 }
 
 .dicas-main-container {
+    display: flex;
+    justify-content: space-between;
     width: 90% !important;
-    margin-top: 30px !important;
-    height: 100vh;
+    margin: 20px 0px 0px 0px !important;
+    height: fit-content;
     background: #FEFEFE;
     border-radius: 8px 8px 0px 0px;
+    /* background-image: url('../../assets/background.png');
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: center; */
+}
+
+.dicas-main-card {
+    height: fit-content;
+    width: 285px;
+}
+
+.dicas-main-title {
+    color: #4F4F4F;
+    font-weight: bold !important;
+}
+
+.dicas-main-card-description {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    min-height: calc(2ch * 1.5) !important;
+    line-height: 1.5 !important;
+}
+
+.dicas-main-card-description:hover {
+    overflow: visible;
+    white-space: normal;
+}
+
+.dicas-main-card-action {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dicas-main-card-btn {
+    background: #53C5D0;
+    border-radius: 4.92308px;
+    border: none;
+    text-align: center;
+    padding: 10px;
+    color: #F2F2F2;
+    outline: unset;
+    transition: 0.3s;
+}
+
+.dicas-main-card-btn:hover {
+    background: rgb(65, 160, 168);
+}
+
+.page-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
+}
+
+@media (max-width: 769px) {
+    .dicas-header {
+        flex-direction: column;
+        height: 60vh;
+    }
+    .dicas-main-container {
+        justify-content: center;
+    }
 }
